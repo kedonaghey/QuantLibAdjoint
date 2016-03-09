@@ -71,7 +71,13 @@
 #endif
 
 #ifndef QL_REAL
-#   define QL_REAL double
+#   ifdef QL_ADJOINT
+        // Define Real for use with QuantLibAdjoint
+#       include <ql/ad.hpp>
+#   else
+        // Define Real as regular double
+#       define QL_REAL double
+#   endif
 #endif
 
 
