@@ -102,6 +102,7 @@
 using namespace QuantLib;
 using namespace boost::assign;
 using boost::unit_test_framework::test_suite;
+using std::log;
 
 namespace {
     Real fokkerPlanckPrice1D(const boost::shared_ptr<FdmMesher>& mesher,
