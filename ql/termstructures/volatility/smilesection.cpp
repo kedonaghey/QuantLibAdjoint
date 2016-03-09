@@ -24,6 +24,7 @@
 #include <ql/math/comparison.hpp>
 
 using std::sqrt;
+using std::fabs;
 
 namespace QuantLib {
 

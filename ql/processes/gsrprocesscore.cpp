@@ -19,6 +19,9 @@
 
 #include <ql/processes/gsrprocesscore.hpp>
 
+using std::pow;
+using std::exp;
+
 namespace QuantLib {
 
 namespace detail {

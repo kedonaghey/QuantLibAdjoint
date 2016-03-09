@@ -30,6 +30,8 @@
 
 #include <boost/make_shared.hpp>
 
+using std::exp;
+
 namespace QuantLib {
 
     GeneralizedBlackScholesProcess::GeneralizedBlackScholesProcess(

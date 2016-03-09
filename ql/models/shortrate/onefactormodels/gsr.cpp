@@ -21,6 +21,8 @@
 #include <ql/quotes/simplequote.hpp>
 #include <boost/make_shared.hpp>
 
+using std::exp;
+
 namespace QuantLib {
 
 Gsr::Gsr(const Handle<YieldTermStructure> &termStructure,

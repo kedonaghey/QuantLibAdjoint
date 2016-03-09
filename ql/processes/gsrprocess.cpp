@@ -19,6 +19,8 @@
 
 #include <ql/processes/gsrprocess.hpp>
 
+using std::sqrt;
+
 namespace QuantLib {
 
     GsrProcess::GsrProcess(const Array &times, const Array &vols,
