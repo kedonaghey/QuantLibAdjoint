@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>testsuiteadjoint</ProjectName>
+    <ProjectName>QuantLibAdjointTests</ProjectName>
     <ProjectGuid>{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}</ProjectGuid>
     <RootNamespace>testsuiteadjoint</RootNamespace>
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and $(VisualStudioVersion) == ''">$(VCTargetsPath11)</VCTargetsPath>
