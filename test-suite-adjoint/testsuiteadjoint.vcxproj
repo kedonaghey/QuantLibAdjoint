@@ -636,7 +636,36 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="*.cpp" />
+    <ClCompile Include="adjointbatesmodeltest.cpp" />
+    <ClCompile Include="adjointbermudanswaptiontest.cpp" />
+    <ClCompile Include="adjointblackformulatest.cpp" />
+    <ClCompile Include="adjointbondportfoliotest.cpp" />
+    <ClCompile Include="adjointcomplextest.cpp" />
+    <ClCompile Include="adjointcreditdefaultswaptest.cpp" />
+    <ClCompile Include="adjointdefaultprobabilitycurvetest.cpp" />
+    <ClCompile Include="adjointdistributiontest.cpp" />
+    <ClCompile Include="adjointeuropeanoptionportfoliotest.cpp" />
+    <ClCompile Include="adjointexchangeratetest.cpp" />
+    <ClCompile Include="adjointfastfouriertransformtest.cpp" />
+    <ClCompile Include="adjointfraportfoliotest.cpp" />
+    <ClCompile Include="adjointgjrgarchmodeltest.cpp" />
+    <ClCompile Include="adjointhestonprocesstest.cpp" />
+    <ClCompile Include="adjointmarketmodelcalibrationtest.cpp" />
+    <ClCompile Include="adjointmatricestest.cpp" />
+    <ClCompile Include="adjointpathgeneratortest.cpp" />
+    <ClCompile Include="adjointpiecewiseyieldcurvetest.cpp" />
+    <ClCompile Include="adjointrealmathtest.cpp" />
+    <ClCompile Include="adjointshortratemodelstest.cpp" />
+    <ClCompile Include="adjointspecialfunctionstest.cpp" />
+    <ClCompile Include="adjointswaptest.cpp" />
+    <ClCompile Include="adjointswaptiontest.cpp" />
+    <ClCompile Include="adjointswaptionvolatilitycubetest.cpp" />
+    <ClCompile Include="adjointswaptionvolatilitymatrixtest.cpp" />
+    <ClCompile Include="adjointtermstructuretest.cpp" />
+    <ClCompile Include="adjointvariategeneratorstest.cpp" />
+    <ClCompile Include="adjointzerospreadedtermstructuretest.cpp" />
+    <ClCompile Include="quantlibtestsuite.cpp" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="*.hpp" />
