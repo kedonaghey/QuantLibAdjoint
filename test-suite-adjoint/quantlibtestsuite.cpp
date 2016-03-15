@@ -152,7 +152,7 @@ test_suite* init_unit_test_suite(int, char* []) {
             " undefined"
             #endif
          ;
-# pragma message ("AdjointArrayTest::suite() was exclude from project in 2015 because it does not buildable.")
+
     std::string rule = std::string(35, '=');
 
     BOOST_TEST_MESSAGE(rule);
