@@ -34,13 +34,17 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 using namespace QuantLib;
 using namespace boost::unit_test_framework;
 
-#define BLACK_SCHOLES_FUNC
-
+#define BLACK_SCHOLES_FUNC // delta greek calculation test
+//#define BLACK_SCHOLES_DELTA  // gamma greek calculation test
+ 
 #define OUTPUT_FOLDER_NAME "AdjointArrayOptimization"
 
 #if defined BLACK_SCHOLES_FUNC
 #   define TARGET_FUNCTION(x) (black_func(x))
 #   define TARGET_FUNCTION_NAME "BlackScholes price"
+#elif defined BLACK_SCHOLES_DELTA
+#   define TARGET_FUNCTION(x) (black_delta(x))
+#   define TARGET_FUNCTION_NAME "BlackScholes delta"
 #endif
 
 namespace
@@ -79,6 +83,18 @@ namespace
         T stdDev = 0.2;
 
         return BlackCalculator_T<T>(Option::Call, strike, forward, stdDev, discount).value();
+    }
+
+    template <class T>
+    inline T black_delta(const T& x)
+    {
+        T spot = x;
+        T strike = 100;
+        T discount = 0.5;
+        T forward = spot / discount;
+        T stdDev = 0.2;
+
+        return BlackCalculator_T<T>(Option::Call, strike, forward, stdDev, discount).delta(x);
     }
 
     // Struct for graphics recording.
