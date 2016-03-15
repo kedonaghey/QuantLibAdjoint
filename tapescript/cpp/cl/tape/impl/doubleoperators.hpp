@@ -775,27 +775,6 @@ namespace boost { namespace numeric { namespace ublas
 }
 }}}
 
-namespace boost
-{
-    namespace detail {
-        template <typename Type> struct is_arithmetic_impl;
-
-        template<typename Base>
-        struct is_arithmetic_impl<cl::tape_wrapper<Base>>
-        {
-            typedef typename cl::remove_ad<typename cl::tape_wrapper<Base>::value_type>::type value_type;
-#if defined BOOST_STATIC_CONSTANT
-            BOOST_STATIC_CONSTANT(bool, value =
-                (::boost::type_traits::ice_or<
-                    ::boost::is_integral<value_type>::value,
-                    ::boost::is_float<value_type>::value
-                >::value));
-#else
-            static const bool value = std::is_arithmetic<value_type>::value;
-#endif
-            typedef typename std::is_arithmetic<value_type>::type type;
-        };
-    }
-}
+# include <cl/tape/impl/detail/boost_traits.hpp>
 
 #endif  // cl_tape_impl_doubleoperators_hpp
