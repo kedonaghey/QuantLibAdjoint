@@ -5,8 +5,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLibAdjoint", "QuantLib.vcxproj", "{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLibTests", "test-suite\testsuite.vcxproj", "{A613045C-34AF-4706-AA3C-730C92524F74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F} = {05FCBA2D-EBAF-4265-94E6-CB33526C758F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLibAdjointTests", "test-suite-adjoint\testsuiteadjoint.vcxproj", "{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F} = {05FCBA2D-EBAF-4265-94E6-CB33526C758F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boost", "dependencies\cpp\boost\Boost_vc12.vcxproj", "{05FCBA2D-EBAF-4265-94E6-CB33526C758F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +104,26 @@ Global
 		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|Win32.Build.0 = Release|Win32
 		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|x64.ActiveCfg = Release|x64
 		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|x64.Build.0 = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug (static runtime)|Mixed Platforms.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug (static runtime)|Mixed Platforms.Build.0 = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug (static runtime)|Win32.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug (static runtime)|x64.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug (static runtime)|x64.Build.0 = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug|Win32.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug|x64.ActiveCfg = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Debug|x64.Build.0 = Debug|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release (static runtime)|Mixed Platforms.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release (static runtime)|Mixed Platforms.Build.0 = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release (static runtime)|Win32.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release (static runtime)|x64.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release (static runtime)|x64.Build.0 = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|Mixed Platforms.Build.0 = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|Win32.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.ActiveCfg = Release|x64
+		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
