@@ -36,9 +36,9 @@ using namespace boost::unit_test_framework;
 
 //#define BIG_FUNC
 //#define IF_PROBLEM
-//#define BLACK_SCHOLES_FUNC
+#define BLACK_SCHOLES_FUNC
 //#define SIN_COS_EXP
-#define SIMPLE_ARITHMETIC
+//#define SIMPLE_ARITHMETIC
 //#define BLACK_GAMMA
 
 //#define PRINT_CHECKPOINT
@@ -204,10 +204,11 @@ namespace
     template <class T>
     inline T black_func(const T& x)
     {
-        T strike = 100 + 0.2 * x;
+        T spot = 50 + 0.01*x;
+        T strike = 100;
         T discount = 0.5;
-        T forward = 200;
-        T stdDev = 0.5;
+        T forward = spot / discount;
+        T stdDev = 0.2;
 
         return BlackCalculator_T<T>(Option::Call, strike, forward, stdDev, discount).value();
     }

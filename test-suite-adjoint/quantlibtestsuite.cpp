@@ -70,9 +70,7 @@
 #include "adjointvariategeneratorstest.hpp"
 #include "adjointfraportfoliotest.hpp"
 
-# if defined FIXED_
 #include "adjointarraytest.hpp"
-# endif
 
 #include "adjointcomplextest.hpp"
 #include "adjointfastfouriertransformtest.hpp"

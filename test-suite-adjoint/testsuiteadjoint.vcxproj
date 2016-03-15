@@ -636,6 +636,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="adjointarraytest.cpp" />
     <ClCompile Include="adjointbatesmodeltest.cpp" />
     <ClCompile Include="adjointbermudanswaptiontest.cpp" />
     <ClCompile Include="adjointblackformulatest.cpp" />

@@ -18,6 +18,7 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
 #define CL_BASE_SERIALIZER_OPEN
+#define CL_TAPE_INNER_ARRAY_ENABLED
 
 #include "adjointarrayimpl.hpp"
 
