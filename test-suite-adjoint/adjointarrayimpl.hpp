@@ -34,18 +34,28 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 using namespace QuantLib;
 using namespace boost::unit_test_framework;
 
-#define BLACK_SCHOLES_FUNC // delta greek calculation test
+#define BLACK_SCHOLES_FROM_SPOT// delta greek calculation test
 //#define BLACK_SCHOLES_DELTA  // gamma greek calculation test
- 
+//#define BLACK_SCHOLES_FROM_VOL  // vega greek calculation test
 #define OUTPUT_FOLDER_NAME "AdjointArrayOptimization"
 
-#if defined BLACK_SCHOLES_FUNC
+#if defined BLACK_SCHOLES_FROM_SPOT
 #   define TARGET_FUNCTION(x) (black_func(x))
 #   define TARGET_FUNCTION_NAME "BlackScholes price"
+#   define X_DEFAULT 50.0
+#   define X_STEP 10.0
 #elif defined BLACK_SCHOLES_DELTA
 #   define TARGET_FUNCTION(x) (black_delta(x))
 #   define TARGET_FUNCTION_NAME "BlackScholes delta"
+#   define X_DEFAULT 50.0
+#   define X_STEP 10.0
+#elif defined BLACK_SCHOLES_FROM_VOL
+#   define TARGET_FUNCTION(x) (black_func2(x))
+#   define TARGET_FUNCTION_NAME "BlackScholes price"
+#   define X_DEFAULT 0.1
+#   define X_STEP 0.05
 #endif
+
 
 namespace
 {
@@ -97,6 +107,23 @@ namespace
         return BlackCalculator_T<T>(Option::Call, strike, forward, stdDev, discount).delta(x);
     }
 
+    using std::sqrt;
+
+    template <class T>
+    inline T black_func2(const T& x)
+    {
+        T volatility = x;
+        T time = 1;
+        T rate = 0.05;
+        T spot = 100;
+        T strike = 120;
+        T discount = std::exp(-rate*time);
+        T forward = spot / discount;
+        T stdDev = volatility * sqrt(time);
+
+        return BlackCalculator_T<T>(Option::Call, strike, forward, stdDev, discount).value();
+    }
+
     // Struct for graphics recording.
     struct OutStruct
     {
@@ -142,7 +169,7 @@ namespace
             setLogger(logger);
             for (size_t i = 0; i < size_; i++)
             {
-                input_[i] = 50 + 10 * (double(i) / size_);
+                input_[i] = X_DEFAULT + X_STEP*(double(i) / size_);
             }
 
             std::copy(input_.begin(), input_.end(), X_.begin());
@@ -309,7 +336,7 @@ namespace
             setLogger(logger);
             for (size_t i = 0; i < size_; i++)
             {
-                input_[i] = 50 + 10 * (double(i) / size_);
+                input_[i] = X_DEFAULT + X_STEP*(double(i) / size_);
             }
 
             tape_type x(inner_type(std::valarray<double>(input_.data(), size)));
@@ -521,11 +548,11 @@ namespace
             setLogger(logger);
             for (size_t i = 0; i < size_; i++)
             {
-                input_[i] = 50 + 10 * (double(i) / size_);
+                input_[i] = X_DEFAULT + X_STEP*(double(i) / size_);
             }
 
             x_val_ = std::valarray<double>(input_.data(), size);
-            X_ = { tape_type(50) };
+            X_ = { tape_type(X_DEFAULT) };
         }
 
         void recordTape()

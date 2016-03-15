@@ -124,7 +124,7 @@ bool AdjointArrayTest::testMixed()
     cl::tape_value& input = test.x_val_;
 
     // Set the scalar value (default) as input variable.
-    std::vector<cl::tape_object> X = { cl::tape_object(50) };
+    std::vector<cl::tape_object> X = { cl::tape_object(X_DEFAULT) };
 
     // Declare an independent variable.
     cl::Independent(X);
