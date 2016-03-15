@@ -47,6 +47,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CVAIRS", "Examples\CVAIRS\C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boost", "dependencies\cpp\boostBoost_vc12.vcxproj", "{05FCBA2D-EBAF-4265-94E6-CB33526C758F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testsuiteadjoint", "test-suite-adjoint\testsuiteadjoint.vcxproj", "{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug (static runtime)|Win32 = Debug (static runtime)|Win32
@@ -391,6 +393,22 @@ Global
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|Win32.ActiveCfg = Release|x64
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.ActiveCfg = Release|x64
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.Build.0 = Release|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug (static runtime)|Win32.ActiveCfg = Debug (static runtime)|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug (static runtime)|Win32.Build.0 = Debug (static runtime)|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug (static runtime)|x64.Build.0 = Debug (static runtime)|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug|Win32.Build.0 = Debug|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug|x64.ActiveCfg = Debug|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Debug|x64.Build.0 = Debug|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release (static runtime)|Win32.ActiveCfg = Release (static runtime)|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release (static runtime)|Win32.Build.0 = Release (static runtime)|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release (static runtime)|x64.ActiveCfg = Release (static runtime)|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release (static runtime)|x64.Build.0 = Release (static runtime)|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|Win32.ActiveCfg = Release|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|Win32.Build.0 = Release|Win32
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|x64.ActiveCfg = Release|x64
+		{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
