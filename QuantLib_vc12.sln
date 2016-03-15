@@ -45,7 +45,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasketLosses", "Examples\Ba
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CVAIRS", "Examples\CVAIRS\CVAIRS.vcxproj", "{D85EA161-361A-4CAC-8B77-39E174FCFFE2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boost", "dependencies\cpp\boostBoost_vc12.vcxproj", "{05FCBA2D-EBAF-4265-94E6-CB33526C758F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boost", "dependencies\cpp\boost\Boost_vc12.vcxproj", "{05FCBA2D-EBAF-4265-94E6-CB33526C758F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testsuiteadjoint", "test-suite-adjoint\testsuiteadjoint.vcxproj", "{82F92E92-CD89-46BD-A23A-E7D58C0B0BD3}"
 EndProject
