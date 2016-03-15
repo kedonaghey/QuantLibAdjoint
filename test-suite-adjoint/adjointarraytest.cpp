@@ -26,57 +26,13 @@ using namespace QuantLib;
 using namespace boost::unit_test_framework;
 
 
-bool AdjointArrayTest::testOnePointOpt()
-{
-    BOOST_TEST_MESSAGE("Testing Adjoint with OnePoint optimization...");
-
-    // Initializations...
-    Size n = 3;
-    OnePointTestData td;
-    OnePointTest test(n, &td.outPerform_);
-    std::vector<double>& input = test.input_;
-
-    // Use only one input variable for tape recording.
-    std::vector<Real> X = { input[0] };
-
-    // Declare an independent variable.
-    cl::Independent(X);
-
-    // Calculate the target function for only one input value (during tape recording).
-    std::vector<Real> Y = { TARGET_FUNCTION(X[0]) };
-
-    // Declare tape function and stop the tape recording.
-    cl::tape_function<double> f(X, Y);
-
-    // Forward mode calculations.
-    test.forwardResults_.resize(n);
-    std::vector<double> xq(1);
-    std::vector<double> xq1(1, 1);
-    cl::tape_serializer<double> ss;
-    for (Size i = 0; i < n; i++)
-    {
-        // Calculate the function derivatiove for each input value.
-        xq[0] = input[i];
-        f.Forward(0, xq);
-        test.forwardResults_[i] = f.Forward(1, xq1, ss)[0];
-    }
-
-    // Result checking and output generation...
-    test.calcAnalytical();
-    bool ok = test.checkAdjoint<>();
-    ok &= test.testAdjoint<>();
-    ok &= td.makeOutput();
-    return ok;
-}
-
-
 bool AdjointArrayTest::testNoOpt()
 {
     BOOST_TEST_MESSAGE("Testing Adjoint for vector without optimization...");
 
     // Initializations...
     NoOptTestData td;
-    Size n = 3;
+    Size n = 5;
     NoOptTest test(n, &td.outPerform_);
     std::vector<Real>& X = test.X_;
 
@@ -100,12 +56,19 @@ bool AdjointArrayTest::testNoOpt()
 
     // Result checking and output generation...
     test.calcAnalytical();
+
+    std::cout << "Testing Adjoint for vector without optimization..." << std::endl;
+    std::cout << "Adjoint derivatives\tFinite-difference derivatives" << std::endl;
+    for (int i = 0; i < test.size_; i++)
+    {
+        std::cout << std::setprecision(8) << test.reverseResults_[i] << "\t\t" << test.analyticalResults_[i] << std::endl;
+    }
+
     bool ok = test.checkAdjoint<>();
     ok &= test.testAdjoint<>();
     ok &= td.makeOutput();
     return ok;
 }
-
 
 bool AdjointArrayTest::testInnerArray()
 {
@@ -113,7 +76,7 @@ bool AdjointArrayTest::testInnerArray()
 
     // Initializations...
     InnerArrayTestData td;
-    Size n = 3;
+    Size n = 5;
     InnerArrayTest test(n, &td.outPerform_);
     std::vector<cl::tape_object> X = { test.X_[0] };
 
@@ -136,12 +99,19 @@ bool AdjointArrayTest::testInnerArray()
     test.setForwardResults(forw);
     test.setReverseResults(rev);
     test.calcAnalytical();
+
+    std::cout << "Testing Adjoint using InnerArray class..." << std::endl;
+    std::cout << "Adjoint derivatives\tFinite-difference derivatives" << std::endl;
+    for (int i = 0; i < test.size_; i++)
+    {
+        std::cout << std::setprecision(8) << test.reverseResults_[i] << "\t\t" << test.analyticalResults_[i] << std::endl;
+    }
+
     bool ok = test.check();
     ok &= test.test();
     ok &= td.makeOutput();
     return ok;
 }
-
 
 bool AdjointArrayTest::testMixed()
 {
@@ -149,12 +119,12 @@ bool AdjointArrayTest::testMixed()
     
     // Initializations...
     MixedTestData td;
-    Size n = 3;
+    Size n = 5;
     MixedTest test(n, &td.outPerform_);
     cl::tape_value& input = test.x_val_;
 
     // Set the scalar value (default) as input variable.
-    std::vector<cl::tape_object> X = { cl::tape_object() };
+    std::vector<cl::tape_object> X = { cl::tape_object(50) };
 
     // Declare an independent variable.
     cl::Independent(X);
@@ -179,32 +149,19 @@ bool AdjointArrayTest::testMixed()
     test.setForwardResults(forw);
     test.setReverseResults(rev);
     test.calcAnalytical();
+
+    std::cout << "Testing Adjoint using mixed optimization..." << std::endl;
+    std::cout << "Adjoint derivatives\tFinite-difference derivatives" << std::endl;
+    for (int i = 0; i < test.size_; i++)
+    {
+        std::cout << std::setprecision(8) << test.reverseResults_[i] << "\t\t" << test.analyticalResults_[i] << std::endl;
+    }
+
     bool ok = test.check();
     ok &= test.test();
     ok &= td.makeOutput();
     return ok;
 }
-
-
-bool AdjointArrayTest::testCheckpoint()
-{
-    bool ok = true;
-#if  defined PRINT_CHECKPOINT
-
-    BOOST_TEST_MESSAGE("Testing Adjoint using Checkpoint optimization...");
-
-    CheckpointTestData td;
-    Size n = 3;
-    CheckpointTest test(n, &td.outPerform_);
-
-    ok &= test.testAdjoint<>();
-
-    ok &= td.makeOutput();
-
-#endif
-    return ok;
-}
-
 
 bool AdjointArrayTest::printAll()
 {
@@ -212,23 +169,19 @@ bool AdjointArrayTest::printAll()
 
 #if defined CL_GRAPH_GEN
     compareSize();
-    compareFunc();
 #endif
 
     return true;
 }
 
-
 test_suite* AdjointArrayTest::suite()
 {
     test_suite* suite = BOOST_TEST_SUITE("Adjoint array tests.");
 
-    suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::testOnePointOpt));
     suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::testNoOpt));
     suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::testInnerArray));
     suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::testMixed));
-    //suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::testCheckpoint));
-    //suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::printAll));
+    suite->add(QUANTLIB_TEST_CASE(&AdjointArrayTest::printAll));
 
     return suite;
 }
@@ -238,10 +191,6 @@ test_suite* AdjointArrayTest::suite()
 
 BOOST_AUTO_TEST_SUITE(ad_array)
 
-BOOST_AUTO_TEST_CASE(testArrayOnePointOpt)
-{
-    BOOST_CHECK(AdjointArrayTest::testOnePointOpt());
-}
 BOOST_AUTO_TEST_CASE(testArrayNoOpt)
 {
     BOOST_CHECK(AdjointArrayTest::testNoOpt());
@@ -254,10 +203,6 @@ BOOST_AUTO_TEST_CASE(testArrayMixed)
 {
     BOOST_CHECK(AdjointArrayTest::testMixed());
 }
-//BOOST_AUTO_TEST_CASE(testArrayCheckpoint)
-//{
-//    BOOST_CHECK(AdjointArrayTest::testCheckpoint());
-//}
 BOOST_AUTO_TEST_CASE(testArrayAll)
 {
     BOOST_CHECK(AdjointArrayTest::printAll());

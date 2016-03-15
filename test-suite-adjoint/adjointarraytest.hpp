@@ -28,11 +28,9 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 class AdjointArrayTest
 {
 public:
-    static bool testOnePointOpt();
     static bool testInnerArray();
     static bool testMixed();
     static bool testNoOpt();
-    static bool testCheckpoint();
     static bool printAll();
     static boost::unit_test_framework::test_suite* suite();
 };
