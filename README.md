@@ -1,11 +1,14 @@
 
-QuantLibAdjoint
-===============
+# QuantLibAdjoint
 
 QuantLibAdjoint implements adjoint algorithmic differentiation (AAD)
 in QuantLib using
 [TapeScript](http://github.com/compatibl/tapescript),  a 
-C++ library with support for scalar and vector AAD maintained by CompatibL.
+C++ library with support for scalar and vector AAD.
+
+QuantLibAdjoint repository is a fork of the
+master QuantLib repository located at
+[github.com/lballabio/QuantLib](http://github.com/lballabio/QuantLib).
 
 QuantLib, QuantLibAdjoint, and TapeScript are Non-Copylefted Free Software and OSI Certified Open Source Software.
 
@@ -14,28 +17,48 @@ comprehensive software framework for quantitative finance. QuantLib is
 a free/open-source library for modeling, trading, and risk management
 in real-life.
 
-Questions and feedback
-----------------------
-
-Bugs can be reported as a GitHub issue at
+Bugs can be reported  at
 <https://github.com/compatibl/QuantLibAdjoint/issues>; if you have a patch
-available, you can open a pull request instead (see "Contributing"
-below).
+for a bugfix or new feature, you can open a pull request instead.
 
+## TapeScript
 
-Contributing
-------------
+TapeScript is an open source library for adjoint algorithmic differentiation
+(AAD) developed and maintained by CompatibL. It can be downloaded from
+[github.com/compatibl/tapescript](http://github.com/compatibl/tapescript) and used free of charge in academic or commercial applications.
 
-The easiest way to contribute is through pull requests on GitHub.  Get
-a GitHub account if you don't have it already and clone the repository
-at <https://github.com/compatibl/QuantLibAdjoint> with the "Fork" button in the
-top right corner of the page. Check out your clone to your machine,
-code away, push your changes to your clone and submit a pull request;
-instructions are available at
-<https://help.github.com/articles/fork-a-repo>.  (In case you need
-them, more detailed instructions for creating pull requests are at
-<https://help.github.com/articles/using-pull-requests>, and a basic
-guide to GitHub is at
-<https://guides.github.com/activities/hello-world/>.
+TapeScript supports vector AAD (tape compression), an approach in which
+each slot of the calculation record (AAD tape) can store not only a
+single double number, but also an entire array of values. Vector AAD
+can lead to performance gain of several orders of magnitude due to the reduction
+of tape size.
 
-We're looking forward to your contributions.
+### TapeScript features:
+
+* Scalar AAD
+* Vector AAD (tape compression)
+* APIs for C++, C#, and Java
+* Complex numbers
+* Works with Boost and QuantLib
+* Multithreading support
+
+## About CompatibL
+
+CompatibL offers turnkey solutions for XVA and regulatory capital
+as well as custom development, integration, and consultancy.
+
+Check out TapeLib, CompatibL's product suite for AAD that incorporates:
+
+* A C++ library extending TapeScript with features specific to quantitative finance
+* An application platform for interactive AAD
+
+### TapeLib features:
+
+* Document database preserving AAD data
+* Tape database
+* Finance-specific atomics including adjointable AMC
+* User defined atomics
+* Tape cutting and splicing
+* Parallel tape execution
+* Specialized gate checking API
+* Excel addin, desktop and client
