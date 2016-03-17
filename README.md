@@ -3,7 +3,7 @@
 
 QuantLibAdjoint implements adjoint algorithmic differentiation (AAD)
 in QuantLib using
-[TapeScript](http://github.com/compatibl/tapescript),  a 
+[TapeScript](http://tapescript.org),  an open source (Apache license) 
 C++ library with support for scalar and vector AAD.
 
 QuantLibAdjoint repository is a fork of the
@@ -23,7 +23,7 @@ for a bugfix or new feature, you can open a pull request instead.
 
 ## TapeScript
 
-TapeScript is an open source library for adjoint algorithmic differentiation
+[TapeScript](http://tapescript.org) is an open source library for adjoint algorithmic differentiation
 (AAD) developed and maintained by CompatibL. It can be downloaded from
 [github.com/compatibl/tapescript](http://github.com/compatibl/tapescript) and used free of charge in academic or commercial applications.
 
