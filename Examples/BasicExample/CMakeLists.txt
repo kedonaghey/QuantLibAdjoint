@@ -1,0 +1,2 @@
+add_executable(BasicExample basicexample.cpp)
+target_link_libraries(BasicExample QuantLib)
