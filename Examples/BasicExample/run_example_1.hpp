@@ -1,1 +1,1 @@
-int example_1();
+void example_1();
